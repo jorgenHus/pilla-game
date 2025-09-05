@@ -1,0 +1,72 @@
+// SMØR - NPC-data (100% identisk med data/npcs.json)
+
+const NPCS_DATA = [
+  {
+    name: "Tutti",
+    displayText: "Tuttis tempo: alle øl dobles når spilleren spiller dem",
+    effects: { double_beer: true },
+  },
+  {
+    name: "Sjefen",
+    displayText:
+      "Kjenner dere ølet: Kjenner dere ølet gir 4 minnepoeng istedefor 2, Dørvakt-bonus: -1 på alle dørvaktkast",
+    effects: {
+      enhance_know_beer: true,
+      bouncer_bonus: -1,
+    },
+  },
+  {
+    name: "Eff",
+    displayText: "Eff gir deg en liten promillebonus når han ankommer",
+    effects: { promille_bonus: 0.5 },
+  },
+  {
+    name: "Hanen",
+    displayText: "Su Getir - En minneverdig entre: +2 minnepoeng",
+    effects: { memory_bonus: 2 },
+  },
+  {
+    name: "Dring",
+    displayText:
+      "Du er Dringa: stå over runden hvis du ikke kaster 4 eller mer",
+    effects: { dring_effect: true },
+  },
+  {
+    name: "Pettern",
+    displayText: "Ledertrøya: +3 på redningskast",
+    effects: { rescue_bonus: 3 },
+  },
+  {
+    name: "Tord",
+    displayText: "Det går ned: +3 på chuggekast",
+    effects: { chug_bonus: 3 },
+  },
+  {
+    name: "Dres",
+    displayText:
+      "En engel i hvit: -0,5% promille ved starten av hver gang det er din tur",
+    effects: { turn_start_promille: -0.5 },
+  },
+  {
+    name: "Kylling",
+    displayText: "Minnerikt: +1M hver runde, Spritflaska: +1% hver runde",
+    effects: {
+      turn_start_memory: 1,
+      turn_start_promille: 1.0,
+    },
+  },
+  {
+    name: "William",
+    displayText: "Stødig fyr: +1 bonus på alle ferdighetskast",
+    effects: {
+      skill_bonus: 1,
+    },
+  },
+  {
+    name: "Eddie",
+    displayText: "Weeey",
+    effects: {
+      brings_random_npc: true,
+    },
+  },
+];

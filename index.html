@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMØR - Spill på mobil</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Intro Screen -->
+    <div id="introScreen" class="intro-screen">
+        <div class="intro-content">
+            <img id="introLogo" src="aztecGamesLogo.png" alt="Aztec Games Logo" class="intro-logo">
+            <div id="introText" class="intro-text">Trykk for å starte</div>
+        </div>
+    </div>
+
+    <!-- Setup Screen -->
+    <div id="setupScreen" class="setup-screen">
+        <div class="setup-container">
+            <h1>🍺 SMØR / PILLA 💊</h1>
+            <p class="subtitle">Sjefen og Sårds ølduell</p>
+            
+            <div class="player-setup">
+                <h2>Spillere</h2>
+                <div id="playerList" class="player-list">
+                    <!-- Players will be added here -->
+                </div>
+                
+                <div class="add-player">
+                    <input type="text" id="playerNameInput" placeholder="Spillernavn" maxlength="20" onkeypress="handleEnterKey(event)">
+                    <button onclick="addPlayer()">Legg til spiller</button>
+                </div>
+                
+                
+                <div class="player-count">
+                    <span id="playerCount">0/4 spillere</span>
+                </div>
+            </div>
+            
+            <button id="startGameBtn" class="start-btn" onclick="startGame()" disabled>
+                Start spill
+            </button>
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="gameScreen" class="game-screen" style="display: none;">
+        <!-- Game Banner (Top) -->
+        <div class="game-banner">
+            <div class="banner-content">
+                <div class="banner-left">
+                    <span id="currentPlace">📍 Sted: Hjemme</span>
+                    <span id="placeEffects">⚡ Stedseffekter: Ingen</span>
+                </div>
+                <div class="banner-right">
+                    <span id="currentPhase">🎯 FASE: Vors</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-container">
+            <!-- Game Log (Top) -->
+            <div class="game-log" id="gameLog">
+                <div class="log-entry info">Spillet starter...</div>
+            </div>
+
+            <!-- Status Panel (Table Layout) -->
+            <div class="status-panel">
+                <div class="status-section">
+                    <div class="players-table-container">
+                        <table class="players-table" id="playersTable">
+                            <thead>
+                                <tr>
+                                    <th>Spiller</th>
+                                    <th>🍺 Promille</th>
+                                    <th>🧠 Minner</th>
+                                    <th>🃏 Kort</th>
+                                    <th>👥 NPC-er</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Players will be rendered here as table rows -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="status-section">
+                    <h3 class="status-title">🏠 NPC-er ute på byen</h3>
+                    <div class="npcs-section" id="npcsInTown">
+                        <!-- NPCs will be rendered here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Player Hand (Bottom) -->
+            <div class="hand-panel">
+                <div class="hand-header">
+                    <span id="currentPlayerName">Din tur</span>
+                    <button id="toggleHandBtn" class="toggle-hand-btn" onclick="toggleHandVisibility()">Vis hånd</button>
+                </div>
+                <div id="playerHand" class="hand-cards">
+                    <!-- Player cards will be rendered here -->
+                </div>
+                <div id="handOverlay" class="hand-overlay">
+                    <button class="show-hand-btn" onclick="toggleHandVisibility()">Vis hånd</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Modal</h3>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Modal content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- NPC Info Modal -->
+    <div id="npcModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>NPC-er ute på byen</h3>
+                <button class="close-btn" onclick="closeNpcModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="npcModalBody">
+                <!-- NPC content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Dice Roll Modal -->
+    <div id="diceModal" class="dice-modal">
+        <div class="dice-modal-content">
+            <div class="dice-modal-header">
+                <h3 id="diceActionTitle">🎲 Terningkast</h3>
+            </div>
+            <div class="dice-modal-body">
+                <div class="dice-info">
+                    <p id="diceTargetInfo">Du må kaste 3 eller høyere</p>
+                    <div id="diceBonuses" class="dice-bonuses"></div>
+                    <p id="diceTotalInfo" class="dice-total">Totalt: 3</p>
+                </div>
+                <div class="dice-container">
+                    <div id="dice" class="dice">
+                        <div class="dice-face dice-face-1">
+                            <div class="dot"></div>
+                        </div>
+                        <div class="dice-face dice-face-2">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <div class="dice-face dice-face-3">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <div class="dice-face dice-face-4">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <div class="dice-face dice-face-5">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <div class="dice-face dice-face-6">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                    </div>
+                    <p class="dice-instruction">Klikk på terningen for å kaste</p>
+                </div>
+                <div class="dice-result" id="diceResult" style="display: none;">
+                    <p id="diceResultText"></p>
+                </div>
+            </div>
+            <div class="dice-modal-footer">
+                <button id="diceCloseBtn" class="dice-close-btn" onclick="closeDiceModal()" style="display: none;">Lukk</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/data/cards.js"></script>
+    <script src="js/data/npcs.js"></script>
+    <script src="js/data/places.js"></script>
+    <script src="js/game/player.js"></script>
+    <script src="js/game/card.js"></script>
+    <script src="js/game/dice-roller.js"></script>
+    <script src="js/game/place.js"></script>
+    <script src="js/game/npc.js"></script>
+    <script src="js/game/deck.js"></script>
+    <script src="js/game/engine.js"></script>
+    <script src="js/game/game-flow.js"></script>
+    <script src="js/game/player-turns.js"></script>
+    <script src="js/game/special-effects.js"></script>
+    <script src="js/game/ui-display.js"></script>
+    <script src="js/game/ice.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
