@@ -1,0 +1,26 @@
+{
+  "name": "SMØR - Sjefen og Sårds ølduell",
+  "short_name": "SMØR",
+  "description": "Et tekstbasert kortspill som simulerer en natt ut med vors, fest og nach",
+  "start_url": "/",
+  "display": "fullscreen",
+  "background_color": "#1a1a1a",
+  "theme_color": "#ff6b35",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "aztecGamesLogo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "aztecGamesLogo.png", 
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["games", "entertainment"],
+  "lang": "no"
+}
