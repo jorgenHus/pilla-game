@@ -2,7 +2,7 @@
   "name": "SMØR - Sjefen og Sårds ølduell",
   "short_name": "SMØR",
   "description": "Et tekstbasert kortspill som simulerer en natt ut med vors, fest og nach",
-  "start_url": "/",
+  "start_url": "/index.html",
   "display": "fullscreen",
   "background_color": "#1a1a1a",
   "theme_color": "#ff6b35",
