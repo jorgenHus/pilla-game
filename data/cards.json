@@ -1,0 +1,77 @@
+[
+  {
+    "name": "Drikk en øl",
+    "displayText": "Promille: +0.5.",
+    "promille_change": 0.5
+  },
+  {
+    "name": "Drikk en drink",
+    "displayText": "Promille: +0.5, Minner: +1.",
+    "promille_change": 0.5,
+    "minne_change": 1
+  },
+  {
+    "name": "Drikk vann",
+    "displayText": "Promille: -0.5.",
+    "promille_change": -0.5
+  },
+  {
+    "name": "Ring en venn",
+    "displayText": "Ring en venn på byen. >= 3 for å få kontakt.",
+    "promille_change": 0,
+    "minne_change": 0,
+    "special_effect": "call_friend"
+  },
+  {
+    "name": "Shot",
+    "displayText": "Promille: +1, Minner: +1.",
+    "promille_change": 1,
+    "minne_change": 1
+  },
+  {
+    "name": "Kjenner dere ølet!",
+    "displayText": "Alle spillere med 2+ promille får 2 minner. Hvis du har under 2 promille mister du 1 minne.",
+    "promille_change": 0,
+    "minne_change": 0,
+    "special_effect": "know_beer"
+  },
+  {
+    "name": "Skarppakke fra Sjefen",
+    "displayText": "Promille: +1, Minner: +1.",
+    "promille_change": 1,
+    "minne_change": 1
+  },
+  {
+    "name": "Ta en te",
+    "displayText": "Promille: -1.",
+    "promille_change": -1,
+    "minne_change": 0
+  },
+  {
+    "name": "Spise bab",
+    "displayText": "Promille: -0.5.",
+    "promille_change": -0.5,
+    "minne_change": 0
+  },
+  {
+    "name": "Bong",
+    "displayText": "Bytt mot enten Øl (0,5% 1M), Drink(0,5% 1M), Shot (1% 1M)",
+    "promille_change": 0,
+    "minne_change": 0,
+    "special_effect": "bong_choice"
+  },
+  {
+    "name": "Ta en runde",
+    "displayText": "Alle mottar effekten av Øl-kort. Alle skal velge om de vil chugge.",
+    "promille_change": 0,
+    "minne_change": 0,
+    "special_effect": "round_drinks"
+  },
+  {
+    "name": "Ice'ing",
+    "displayText": "Alle kaster terning. De som matcher får ice (+0,5%). Spilleren får minnepoeng basert på antall matches.",
+    "promille_change": 0,
+    "minne_change": 0,
+    "special_effect": "icing"
+  }
+]
