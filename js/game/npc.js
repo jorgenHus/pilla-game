@@ -56,7 +56,7 @@ class NPC {
     }
 
     // Sjefen sin spesialeffekt for "Kjenner dere ølet!"
-    if (this.effects.enhance_know_beer && cardName === "Kjenner dere ølet!") {
+    if (this.effects.enhance_know_beer && cardName === "🗣️ Kjenner dere ølet!") {
       await gameEngine.addToLog(
         `${this.name} forsterker effekten av 'Kjenner dere ølet!'!`,
         "info"
