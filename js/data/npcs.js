@@ -18,7 +18,7 @@ const NPCS_DATA = [
   {
     name: "Eff",
     displayText: "Eff gir deg en liten promillebonus når han ankommer",
-    effects: { promille_bonus: 0.5 },
+    effects: { promille_bonus: 1 },
   },
   {
     name: "Hanen",
@@ -34,7 +34,10 @@ const NPCS_DATA = [
   {
     name: "Pettern",
     displayText: "Ledertrøya: +3 på redningskast",
-    effects: { rescue_bonus: 3 },
+    effects: {
+              turn_start_memory: -1,
+              rescue_bonus: 2, 
+             },
   },
   {
     name: "Tord",
