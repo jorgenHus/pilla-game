@@ -33,7 +33,7 @@ const NPCS_DATA = [
   },
   {
     name: "Pettern",
-    displayText: "Ledertrøya: +3 på redningskast",
+    displayText: "Ledertrøya: +2 på redningskast og -1m per runde",
     effects: {
               turn_start_memory: -1,
               rescue_bonus: 2, 
